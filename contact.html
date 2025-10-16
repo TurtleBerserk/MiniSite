@@ -8,15 +8,25 @@
 </head>
 <body>
   <div class="container">
-    <!-- NAVBAR -->
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <!-- NAVBAR (cargada automáticamente) -->
+    <div id="nav-placeholder"></div>
+    <script>
+      // Cargar automáticamente el menú desde nav.html
+      fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("nav-placeholder").innerHTML = data;
+
+          // Después de cargar el menú, marcar el enlace activo
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll("nav a");
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+    </script>
 
     <!-- HEADER -->
     <header>
@@ -53,9 +63,9 @@
     </main>
   </div>
 
-    <!-- FOOTER -->
-    <footer>
-      <p>&copy; 2025 MiniSite | Web Development Project</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 MiniSite | Web Development Project</p>
+  </footer>
 </body>
 </html>
