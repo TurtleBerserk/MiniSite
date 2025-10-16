@@ -107,4 +107,51 @@ footer {
 @media print {
     body { background: white; color: black; }
     nav, footer { display: none; }
+
+}
+/* ===== Chapter 8 Lab Table Styles ===== */
+
+.table-container {
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: #eee;
+}
+
+caption {
+  caption-side: top;
+  font-weight: bold;
+  padding: 0.5em;
+  color: #00bcd4;
+}
+
+th, td {
+  border: 1px solid #444;
+  text-align: center;
+  padding: 0.75em;
+}
+
+thead {
+  background-color: #222;
+  color: #00bcd4;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+tbody tr:hover {
+  background-color: #333;
+}
+
+tfoot td {
+  background-color: #222;
+  font-style: italic;
+  text-align: center;
 }
