@@ -18,11 +18,11 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       margin-top: 10px;
-      align-items: start;       /* 🔹 Alinea las tarjetas desde arriba */
-      justify-items: center;    /* 🔹 Centra las tarjetas horizontalmente */
+      align-items: start;
+      justify-items: center;
     }
 
-    /* Tarjetas uniformes con texto oscuro */
+    /* Tarjetas uniformes */
     .card {
       background: #f8f8f8;
       border-radius: 8px;
@@ -38,7 +38,7 @@
     figure img {
       width: 100%;
       border-radius: 8px;
-      opacity: 0.95; /* Capítulo 7 */
+      opacity: 0.95;
       box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     }
     figcaption {
@@ -53,14 +53,14 @@
       margin-top: 0;
     }
 
-    /* Alterna color de párrafos (nth-of-type) */
+    /* Alterna color de párrafos */
     .nutrition-tips p:nth-of-type(odd) {
       background: #eef3ff;
       padding: 8px;
       border-radius: 6px;
     }
 
-    /* Responsive (móviles) */
+    /* Responsive */
     @media (max-width: 900px) {
       .nutrition-grid { grid-template-columns: 1fr; }
       .card { width: 100%; }
@@ -69,15 +69,25 @@
 </head>
 <body>
   <div class="container">
-    <!-- NAV -->
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <!-- NAVBAR (cargada automáticamente) -->
+    <div id="nav-placeholder"></div>
+    <script>
+      // Cargar automáticamente el menú desde nav.html
+      fetch("nav.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("nav-placeholder").innerHTML = data;
+
+          // Después de cargar el menú, marcar el enlace activo
+          const currentPage = window.location.pathname.split("/").pop();
+          const navLinks = document.querySelectorAll("nav a");
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+              link.classList.add("active");
+            }
+          });
+        });
+    </script>
 
     <!-- HEADER -->
     <header>
@@ -87,7 +97,6 @@
 
     <!-- MAIN CONTENT -->
     <main class="nutrition-grid">
-      <!-- Article con figure y figcaption -->
       <article class="card">
         <h2>Featured Recipe</h2>
         <figure>
@@ -97,7 +106,6 @@
         <p>Batch cook once, eat well all week between classes and gaming sessions.</p>
       </article>
 
-      <!-- Sección de Quick Tips -->
       <section class="card nutrition-tips">
         <h2>Quick Tips</h2>
         <p>For every cup of rice, use two cups of water.</p>
@@ -106,7 +114,6 @@
         <p>Take short breaks; your brain and eyes will thank you.</p>
       </section>
 
-      <!-- Aside con ideas de snacks -->
       <aside class="card">
         <h2>Snack Ideas</h2>
         <ul>
