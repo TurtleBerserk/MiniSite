@@ -155,3 +155,11 @@ tfoot td {
   font-style: italic;
   text-align: center;
 }
+/* ===== Active Link Highlight ===== */
+nav a.active {
+  color: #ff6600;
+  text-decoration: underline;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+
